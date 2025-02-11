@@ -16,70 +16,71 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.BackEnd.Century.Model.Categoria;
-import com.BackEnd.Century.Service.CategoriaService;
-import com.BackEnd.Century.Service.PdfService;
+import com.BackEnd.Century.Model.Proveedores;
+import com.BackEnd.Century.Service.ProveedorPdfService;
+import com.BackEnd.Century.Service.ProveedoresService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/v1/categorias")
-public class CategoriasController {
+@RequestMapping("/api/v1/proveedores")
+public class ProveedoresController {
 
     @Autowired
-    private CategoriaService categoriaService;
+    private ProveedoresService proveedoresService;
 
     @Autowired
-    private PdfService pdfService;
+    private ProveedorPdfService proveedorPdfService;
 
+   
     @GetMapping("/reporte")
     public void descargarReportePDF(HttpServletResponse response) throws IOException {
         //respuesta
         response.setContentType("application/pdf");
         response.setHeader("Content-Disposition", "attachment; filename=categorias.pdf");
 
-        //datos generar pdf
-        List<Categoria> categoria = categoriaService.listaCategoria();
-        pdfService.generarReporteDeCategorias(response, categoria);
+        //generar pdf
+        List<Proveedores> proveedores = proveedoresService.listarProveedores();
+        proveedorPdfService.generarReporteDeProveedores(response, proveedores);
     }
 
-    @GetMapping("/categorias")
-    public List<Categoria> listarCategorias() {
-        return categoriaService.listaCategoria();
+    @GetMapping("/proveedores")
+    public List<Proveedores> listarProveedores() {
+        return proveedoresService.listarProveedores();
     }
 
-    @PostMapping("/categorias")
-    public ResponseEntity<Categoria> guardarCategoria(@RequestBody Categoria categoria) {
-        Categoria nuevaCategoria = categoriaService.crearCategoria(categoria);
-        return ResponseEntity.status(HttpStatus.CREATED).body(nuevaCategoria);
+    @PostMapping("/proveedores")
+    public ResponseEntity<Proveedores> guardarProveedor(@RequestBody Proveedores proveedor) {
+        Proveedores nuevoProveedor = proveedoresService.crearProveedor(proveedor);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevoProveedor);
     }
 
-    @GetMapping("/categorias/{id}")
-    public ResponseEntity<Categoria> obtenerCategoriaPorId(@PathVariable Long id) {
+    @GetMapping("/proveedores/{id}")
+    public ResponseEntity<Proveedores> obtenerProveedorPorId(@PathVariable Long id) {
         try {
-            Categoria categoria = categoriaService.obtenerCategoriaId(id);
-            return ResponseEntity.ok(categoria);
+            Proveedores proveedor = proveedoresService.obtenerProveedorPorId(id);
+            return ResponseEntity.ok(proveedor);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
-    @PutMapping("/categorias/{id}")
-    public ResponseEntity<Categoria> actualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoria) {
+    @PutMapping("/proveedores/{id}")
+    public ResponseEntity<Proveedores> actualizarProveedor(@PathVariable Long id, @RequestBody Proveedores proveedor) {
         try {
-            categoria.setCategoriaId(id);
-            Categoria categoriaActualizada = categoriaService.updateCategoria(id, categoria);
-            return ResponseEntity.ok(categoriaActualizada);
+            proveedor.setProveedorId(id);
+            Proveedores proveedorActualizado = proveedoresService.actualizarProveedor(id, proveedor);
+            return ResponseEntity.ok(proveedorActualizado);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 
-    @DeleteMapping("/categorias/{id}")
-    public ResponseEntity<Void> eliminarCategoria(@PathVariable Long id) {
+    @DeleteMapping("/proveedores/{id}")
+    public ResponseEntity<Void> eliminarProveedor(@PathVariable Long id) {
         try {
-            categoriaService.eliminarCategoria(id);
+            proveedoresService.eliminarProveedor(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
