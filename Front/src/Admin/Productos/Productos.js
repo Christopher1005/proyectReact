@@ -6,25 +6,8 @@ const Productos = () => {
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
 
-    const descargarPdf = () => {
-      axios.get('http://localhost:8080/api/v1/productos/reporte', {
-          responseType: 'blob', //archivo bin
-      })
-      .then((response) => {
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', 'Productos.pdf');
-          document.body.appendChild(link);
-          link.click();
-      })
-      .catch((error) => {
-          console.error('Error al descargar el PDF:', error);
-      });
-  };
-
     useEffect(() => {
-        axios.get('http://localhost:8080/api/v1/productos/productos')
+        axios.get('http://localhost:8080/api/v1/productos')
             .then(response => {
                 setProductos(response.data);
             })
@@ -34,7 +17,7 @@ const Productos = () => {
     }, []);
 
     const eliminarProducto = (id) => {
-        axios.delete(`http://localhost:8080/api/v1/productos/productos/${id}`)
+        axios.delete(`http://localhost:8080/api/v1/productos/${id}`)
             .then(() => {
                 setProductos(prevProductos => prevProductos.filter(producto => producto.id !== id));
             })
@@ -148,11 +131,6 @@ const Productos = () => {
                         </div>
                         <Link to="/admin/productos/crear" className="btn btn-primary mb-3">Agregar Productos</Link>
                     </div>
-
-                     {/* Boton reporte*/}
-                     <div>
-                        <button onClick={descargarPdf} className="btn btn-secondary">Descargar Reporte PDF</button>
-                    </div>
                 
                     {error && <div className="alert alert-danger">{error}</div>}
 
@@ -163,6 +141,7 @@ const Productos = () => {
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Imagen</th>
+                                    <th>Descripción</th>
                                     <th>Stock</th>
                                     <th>Precio</th>
                                     <th>Acciones</th>
@@ -174,6 +153,7 @@ const Productos = () => {
                                         <td>{producto.id}</td>
                                         <td>{producto.name}</td>
                                         <td><img src={producto.imagen} alt={producto.name} width="50" /></td>
+                                        <td>{producto.descripcion}</td>
                                         <td>{producto.stock}</td>
                                         <td>{producto.precio}</td>
                                         <td>

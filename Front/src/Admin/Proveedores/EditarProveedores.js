@@ -34,7 +34,7 @@ const EditProveedores = () => {
         }
 
         
-        axios.put(`http://localhost:8080/api/v1/proveedores/proveedores/${id}`, formData)
+        axios.put(`http://localhost:8080/api/v1/proveedores/${id}`, formData)
             .then(response => {
                 setSuccess('Proveedor actualizado con éxito!');
                 setError('');
@@ -51,7 +51,7 @@ const EditProveedores = () => {
     
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:8080/api/v1/proveedores/proveedores/${id}`)
+            axios.get(`http://localhost:8080/api/v1/proveedores/${id}`)
                 .then(response => {
                     setFormData(response.data);
                 })

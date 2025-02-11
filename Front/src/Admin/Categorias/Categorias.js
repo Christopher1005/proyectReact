@@ -6,26 +6,9 @@ const Categorias = () => {
     const [categorias, setCategorias] = useState([]);
     const [error, setError] = useState(null);
 
-    const descargarPdf = () => {
-      axios.get('http://localhost:8080/api/v1/categorias/reporte', {
-          responseType: 'blob', //archivo bin
-      })
-      .then((response) => {
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', 'categorias.pdf');
-          document.body.appendChild(link);
-          link.click();
-      })
-      .catch((error) => {
-          console.error('Error al descargar el PDF:', error);
-      });
-  };
-
     
     useEffect(() => {
-        axios.get('http://localhost:8080/api/v1/categorias/categorias')
+        axios.get('http://localhost:8080/api/v1/categorias')
             .then(response => {
                 setCategorias(response.data);
             })
@@ -36,7 +19,7 @@ const Categorias = () => {
 
     
     const eliminarCategoria = (id) => {
-        axios.delete(`http://localhost:8080/api/v1/categorias/categorias/${id}`)
+        axios.delete(`http://localhost:8080/api/v1/categorias/${id}`)
             .then(() => {
                 setCategorias(prevCategorias => prevCategorias.filter(categoria => categoria.categoriaId !== id));
             })
@@ -139,11 +122,6 @@ const Categorias = () => {
                             <h1>Categorías</h1>
                         </div>
                         <Link to="/admin/categorias/crear" className="btn btn-primary mb-3">Agregar Categoría</Link>
-                    </div>
-
-                     {/* Boton reporte*/}
-                    <div>
-                        <button onClick={descargarPdf} className="btn btn-secondary">Descargar Reporte PDF</button>
                     </div>
 
                     {error && <div className="alert alert-danger">{error}</div>}

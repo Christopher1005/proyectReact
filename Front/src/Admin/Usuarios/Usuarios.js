@@ -141,6 +141,7 @@ const Usuarios = () => {
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
+                                    <th>Contraseña</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -150,6 +151,7 @@ const Usuarios = () => {
                                         <td>{usuario.id}</td>
                                         <td>{usuario.nombre}</td>
                                         <td>{usuario.correo}</td>
+                                        <td>{usuario.password}</td>
                                         <td>
                                             <Link to={`/admin/usuarios/${usuario.id}`} className="btn btn-warning btn-sm">Editar</Link>
                                             <button onClick={() => eliminarUsuario(usuario.id)} className="btn btn-danger btn-sm">Eliminar</button>

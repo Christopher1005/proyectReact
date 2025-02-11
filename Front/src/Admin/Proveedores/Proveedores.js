@@ -1,38 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Proveedores = () => {
     const [proveedores, setProveedores] = useState([]);
     const [error, setError] = useState(null);
 
-    const navigate = useNavigate(); 
-
-    const descargarPdf = () => {
-      axios.get('http://localhost:8080/api/v1/proveedores/reporte', {
-          responseType: 'blob', //archivo bin
-      })
-      .then((response) => {
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement('a');
-          link.href = url;
-          link.setAttribute('download', 'proveedores.pdf'); // Cambia el nombre del archivo a "proveedores.pdf"
-          document.body.appendChild(link);
-          link.click();
-      })
-      .catch((error) => {
-          console.error('Error al descargar el PDF:', error);
-      });
-   };
-
     
     useEffect(() => {
-        axios.get('http://localhost:8080/api/v1/proveedores/proveedores')
+        axios.get('http://localhost:8080/api/v1/proveedores')
             .then(response => {
                 setProveedores(response.data);
-                setTimeout(() => {
-                  navigate('/admin/proveedores'); 
-              }, 500);
             })
             .catch(() => {
                 setError("Error al cargar los proveedores o no hay proveedores registrados.");
@@ -41,7 +19,7 @@ const Proveedores = () => {
 
     
     const eliminarProveedor = (id) => {
-        axios.delete(`http://localhost:8080/api/v1/proveedores/proveedores/${id}`)
+        axios.delete(`http://localhost:8080/api/v1/proveedores/${id}`)
             .then(() => {
                 setProveedores(prevProveedores => prevProveedores.filter(proveedor => proveedor.proveedorId !== id));
             })
@@ -145,11 +123,6 @@ const Proveedores = () => {
                             <h1>Proveedores</h1>
                         </div>
                         <Link to="/admin/proveedores/crear" className="btn btn-primary mb-3">Agregar Proveedor</Link>
-                    </div>
-
-                     {/* Boton reporte*/}
-                     <div>
-                        <button onClick={descargarPdf} className="btn btn-secondary">Descargar Reporte PDF</button>
                     </div>
 
                     {error && <div className="alert alert-danger">{error}</div>}

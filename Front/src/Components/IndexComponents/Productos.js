@@ -105,7 +105,7 @@ const Productos = () => {
         {/* Marcas */}
         <h4 className="text-center mt-5 mb-0 marca" id="slider"> Marcas</h4>
         
-        <section className="sec3 mt-5 d-flex justify-content-between">
+            <section className="sec3 mt-5 d-flex justify-content-between">
                 <div className="row row-cols-1 row-cols-md-3 g-4 a">
                     <div className="col">
                         <div className="card carta">
@@ -117,23 +117,6 @@ const Productos = () => {
                             <img src="/img/marcas/amd.webp" className="card-img-top" alt="AMD" />
                         </div>
                     </div>
-                    <div className="col">
-                        <div className="card carta">
-                            <img src="/img/marcas/msi.jpg" className="card-img-top" alt="MSI" />
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="card carta">
-                            <img src="/img/marcas/tuf.jpg" className="card-img-top" alt="TUF" />
-                        </div>
-                    </div>
-
-                    <div className="col">
-                        <div className="card carta">
-                            <img src="/img/marcas/reddragon.jpg" className="card-img-top" alt="RedDragon" />
-                        </div>
-                    </div>
-
                     <div className="col">
                         <div className="card carta">
                             <img src="/img/marcas/intel.webp" className="card-img-top" alt="Logitech" />

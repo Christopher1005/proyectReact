@@ -50,7 +50,7 @@ const Registro = () => {
   const enviarEmail = (usuario) => {
     const templateParams = {
       sendername: usuario.nombre,
-      to: usuario.correo,
+      to: usuario.correo, 
       subject: "¡Bienvenido a CenturyTech!",
       message: "Gracias por registrarte. Ahora puedes comprar los mejores componentes de hardware.",
     };
@@ -92,7 +92,7 @@ const Registro = () => {
         });
     }
   };
-
+  
 
   // Inicio de sesión
   const loginUsuario = (e) => {
@@ -151,8 +151,6 @@ const Registro = () => {
           <h1 className="titulologin">Crear Cuenta</h1>
           <input
             type="text"
-            min={6}
-            max={20}
             placeholder="Nombre"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
@@ -194,11 +192,6 @@ const Registro = () => {
           />
           {errors.passwordLogin && <span className="error">{errors.passwordLogin}</span>}
           <input type="submit" value="Iniciar" className="boton" />
-
-          {/* Enlace "Olvidé mi contraseña" */}
-          <div className="forgot-password">
-            <a href="/recuperar-contraseña">¿Olvidaste tu contraseña?</a>
-          </div>
         </form>
       </div>
 
@@ -221,7 +214,6 @@ const Registro = () => {
         </div>
       </div>
     </div>
-
   );
 };
 

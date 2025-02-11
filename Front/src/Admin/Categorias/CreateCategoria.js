@@ -24,7 +24,7 @@ const CreateCategoria = () => {
         }
 
        
-        axios.post('http://localhost:8080/api/v1/categorias/categorias', { name })
+        axios.post('http://localhost:8080/api/v1/categorias', { name })
             .then(response => {
                 setSuccess('Categoría creada con éxito!');
                 setError('');

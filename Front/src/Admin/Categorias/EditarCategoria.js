@@ -28,7 +28,7 @@ const EditCategoria = () => {
         const categoryData = { name };
 
 
-        axios.put(`http://localhost:8080/api/v1/categorias/categorias/${id}`, categoryData)
+        axios.put(`http://localhost:8080/api/v1/categorias/${id}`, categoryData)
             .then(response => {
                 setSuccess('Categoría actualizada con éxito!');
                 setError('');
@@ -45,7 +45,7 @@ const EditCategoria = () => {
     
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:8080/api/v1/categorias/categorias/${id}`)
+            axios.get(`http://localhost:8080/api/v1/categorias/${id}`)
                 .then(response => {
                     setName(response.data.name); 
                 })

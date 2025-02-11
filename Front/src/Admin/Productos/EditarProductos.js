@@ -34,7 +34,7 @@ const EditarProductos = () => {
             return;
         }
 
-        axios.put(`http://localhost:8080/api/v1/productos/productos/${id}`, formData)
+        axios.put(`http://localhost:8080/api/v1/productos/${id}`, formData)
             .then(response => {
                 setSuccess('Producto actualizado con éxito!');
                 setError('');
@@ -50,7 +50,7 @@ const EditarProductos = () => {
 
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:8080/api/v1/productos/productos/${id}`)
+            axios.get(`http://localhost:8080/api/v1/productos/${id}`)
                 .then(response => {
                     setFormData(response.data);
                 })
@@ -60,7 +60,7 @@ const EditarProductos = () => {
         }
 
         // Cargar categorías y proveedores
-        axios.get('http://localhost:8080/api/v1/categorias/categorias')
+        axios.get('http://localhost:8080/api/v1/categorias')
             .then(response => {
                 setCategorias(response.data);
             })
@@ -68,7 +68,7 @@ const EditarProductos = () => {
                 setError('Error al cargar las categorías.');
             });
 
-        axios.get('http://localhost:8080/api/v1/proveedores/proveedores')
+        axios.get('http://localhost:8080/api/v1/proveedores')
             .then(response => {
                 setProveedores(response.data);
             })
@@ -149,18 +149,6 @@ const EditarProductos = () => {
                                         id="name"
                                         name="name"
                                         value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="imagen" className="form-label">Imagen</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        id="imagen"
-                                        name="imagen"
-                                        value={formData.imagen}
                                         onChange={handleChange}
                                         required
                                     />

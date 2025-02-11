@@ -28,14 +28,14 @@ const CreateProveedores = () => {
         }
 
       
-        axios.post('http://localhost:8080/api/v1/proveedores/proveedores', formData)
+        axios.post('http://localhost:8080/api/v1/proveedores', formData)
             .then(response => {
                 setSuccess('Proveedor creado con éxito!');
                 setError('');
                 setFormData({ name: '', email: '', telefono: '', servicios: '' });
                 setTimeout(() => {
                     navigate('/admin/proveedores'); 
-                }, 500);
+                }, 2000);
             })
             .catch(error => {
                 setError('Hubo un error al crear el proveedor. Intenta nuevamente.');
@@ -187,7 +187,6 @@ const CreateProveedores = () => {
                                     <label htmlFor="telefono" className="form-label">Teléfono</label>
                                     <input
                                         type="text"
-                                        min={10} max={10}
                                         className="form-control"
                                         id="telefono"
                                         name="telefono"
