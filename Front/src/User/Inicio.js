@@ -16,24 +16,24 @@ const Inicio = () => {
                         <div className="offcanvas-body">
                             <ul className="navbar-nav justify-content-center flex-grow-1 pe-3">
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="">Inicio</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Inicio</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="">Productos</a>
+                                    <a className="nav-link mx-lg-2" href="/registro">Productos</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="error404.html">Nosotros</a>
+                                    <a className="nav-link mx-lg-2" href="/registro">Nosotros</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link mx-lg-2" href="#slider">Marcas</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link mx-lg-2" href="/compra"><i className="fa-solid fa-cart-shopping"></i></a>
+                                    <a className="nav-link mx-lg-2" href="/registro"><i className="fa-solid fa-cart-shopping"></i></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <a href="" className="boton-login">Nombre Usuario</a>
+                    <a href="/registro" className="boton-login">Iniciar Sesion</a>
                     <button className="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -157,33 +157,102 @@ const Inicio = () => {
                     </div>
                     <div className="col">
                         <div className="card carta">
-                            <img src="img/marcas/amd.jpg" className="card-img-top" alt="AMD" />
+                            <img src="img/marcas/amd.webp" className="card-img-top" alt="AMD" />
                         </div>
                     </div>
                     <div className="col">
                         <div className="card carta">
-                            <img src="img/marcas/logi.jpg" className="card-img-top" alt="Logitech" />
+                            <img src="img/marcas/msi.jpg" className="card-img-top" alt="MSI" />
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="card carta">
+                            <img src="img/marcas/tuf.jpg" className="card-img-top" alt="TUF" />
+                        </div>
+                    </div>
+
+                    <div className="col">
+                        <div className="card carta">
+                            <img src="img/marcas/reddragon.jpg" className="card-img-top" alt="RedDragon" />
+                        </div>
+                    </div>
+
+                    <div className="col">
+                        <div className="card carta">
+                            <img src="img/marcas/intel.webp" className="card-img-top" alt="Logitech" />
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Footer */}
-            <footer className="container-fluid mt-5">
-                <div className="row p-4">
-                    <div className="col-md-4 text-center">
-                        <a href="https://www.facebook.com"><i className="fa-brands fa-facebook fa-2xl"></i></a>
-                        <a href="https://www.instagram.com"><i className="fa-brands fa-instagram fa-2xl"></i></a>
-                        <a href="https://www.whatsapp.com"><i className="fa-brands fa-whatsapp fa-2xl"></i></a>
-                    </div>
-                    <div className="col-md-4 text-center">
-                        <h5>Centro Tecnológico de Bogotá</h5>
-                    </div>
-                    <div className="col-md-4 text-center">
-                        <h6>&copy; Copyright - CenturyTech.com - Bogotá, Colombia</h6>
+            <footer className="bg-dark-gradient footer">
+            <div className="footer-top">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-6 col-lg-3 my-4">
+                            <div className="mb-4">
+                                <img 
+                                    src="/img/5.jpg" 
+                                    alt="CenturyTech Logo" 
+                                    className="footer-logo"
+                                    width={100}
+                                />
+                            </div>
+                            <div className="text-white-65 mb-4 text-white ">
+                                Conoce la mejor Tienda de HARDWARE en sus Redes Sociales
+                            </div>
+                            <div className="nav footer-social-icon ms-5 me-3">
+                                <a href="#" className="social-icon ">
+                                    <i className="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" className="social-icon ms-5 me-5">
+                                    <i className="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" className="social-icon">
+                                    <i className="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="ms-5 me-5 col-sm-6 col-lg-2 my-4">
+                            <h5 className="text-white h6 mb-4">Productos</h5>
+                            <ul className="list-unstyled white-link footer-links">
+                                <li className="text-white">RAM</li>
+                                <li className="text-white">Gráficas</li>
+                                <li className="text-white">Procesadores</li>
+                                <li className="text-white">Monitores</li>
+                            </ul>
+                        </div>
+                        <div className="ms-5 col-sm-6 col-lg-2 my-4 me-5">
+                            <h5 className="text-white h6 mb-4">Compañía</h5>
+                            <ul className="list-unstyled white-link footer-links">
+                                <li className="text-white">Sobre Nosotros</li>
+                                <li className="text-white">Puntos Físicos</li>
+                                <li className="text-white">Términos y Condiciones</li>
+                                <li className="text-white">Devoluciones</li>
+                            </ul>
+                        </div>
+                        <div className="ms-5 col-sm-6 col-lg-2 my-4">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6010550975952!2d-74.06066512416356!3d4.665002041964236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a5f3f535297%3A0xf509f2cb0f590c3!2sUnilago.!5e0!3m2!1ses-419!2sco!4v1712113587078!5m2!1ses-419!2sco" 
+                                title="CenturyTech Location"
+                                width="400" 
+                                height="300" 
+                                style={{border: 0}} 
+                                allowFullScreen 
+                                loading="lazy" 
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
-            </footer>
+            </div>
+            <div className="footer-bottom footer-border-top light py-3">
+                <div className="container text-center">
+                    <p className="m-0 text-white">© {new Date().getFullYear()} CenturyTech</p>
+                </div>
+            </div>
+        </footer>
         </>
     );
 }

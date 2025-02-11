@@ -218,7 +218,11 @@ body{
     margin-top: 300px;
 }
 
-.footer .footer-socila-icon a {
+.footer-logo{
+    border-radius: 50%;
+}
+
+.footer .footer-social-icon a {
     width: 30px;
     height: 30px;
     display: inline-flex;
@@ -232,7 +236,7 @@ body{
     transition: all 0.59s ease;
 }
 
-.footer .footer-socila-icon a:hover {
+.footer .footer-social-icon a:hover {
     background: var(--primario);
 }
 
